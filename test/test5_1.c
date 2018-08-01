@@ -5,7 +5,7 @@ typedef struct ListNode
     int m_nkey;
     struct ListNode* m_pnext;
 }ListNode;
-
+//创建节点
 ListNode* CreateListNode(char value)
 {
     ListNode* new_node = (ListNode*)malloc(sizeof(ListNode));
@@ -18,6 +18,7 @@ void DestroyNode(ListNode* node)
 {
     free(node);
 }
+//尾插
 void PushBack(ListNode** pHead,char value)
 {
     if(pHead == NULL)
