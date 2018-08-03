@@ -1,7 +1,26 @@
 #include <iostream>
+using namespace std;
 class Solution
 {
 public:
+    //变态跳台阶，一次可以跳1级、2级、3级...n级
+    //f(n) = f(n-1) + f(n-2) + f(n-3) + f(n -4)+ ...+f(n -n)
+    //     = f(0) + f(1) + f(2) + (3) + ... +f(n-2) + f(n-1)
+    //     = f(n-1) + f(n-1)
+    //     =2 * f(n-1)
+    int jumpFloorII(int n)
+    {
+        if(n < 0)
+        {
+            return -1;
+        }
+        if(n == 1)
+        {
+            return 1;
+        }
+        return 2*jumpFloorII(n-1);
+    }
+
     int jumpFloor(int n)
     {
         if(n < 0)
@@ -55,3 +74,16 @@ public:
 //    }
 
 };
+int main()
+{
+    Solution number;
+    int ret = 0;
+    ret = number.jumpFloor(4);
+    cout<<"ret = "<<ret<<endl;
+
+    ret = number.jumpFloorII(4);
+    cout<<"ret = "<<ret<<endl;
+
+
+    return 0;
+}
