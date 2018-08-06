@@ -22,9 +22,9 @@ using namespace std;
 //    int _minute;
 //    int _second;
 //};
-class Date
-{
-public:
+//class Date
+//{
+//public:
     //无参构造函数
     /* Date() */
     /* { */
@@ -194,3 +194,4 @@ public:
 //    Test();
 //    return 0;
 //}
+
