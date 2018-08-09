@@ -33,6 +33,7 @@ public:
                 result.push_back(matrix[up][i]);
 
             }
+            //打印最后一列
             if(up < down)
             {
                 for(i = up + 1;i <= down;i++)
@@ -41,6 +42,7 @@ public:
 
                 }
             }
+            //打印最后一行
             if(up < down && left < right)
             {
                 for(i = right - 1;i >= left;i--)
