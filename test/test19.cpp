@@ -52,6 +52,7 @@ public:
                 }               
 
             }
+            //打印第一列
             if(up < down && left < right)
             {
                 for(i = down -1;i > left;i--)
@@ -61,6 +62,7 @@ public:
                 }
 
             }
+            //重新更新四个角
             left++;
             right--;
             up++;
