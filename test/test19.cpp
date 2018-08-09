@@ -5,10 +5,14 @@ class Solution {
 public:
     vector<int> printMatrix(vector<vector<int> > matrix) {
         int row = matrix.size();
+        //获取行号
         int col = matrix[0].size();
+        //获取列号
         vector<int> result;
+        //重建一个vector用来保存改完顺序后的元素
         if(row == 0 || col == 0)
         {
+            //空二维数组，返回一个空数组
             return result;
 
         }
@@ -17,7 +21,7 @@ public:
         int right = col - 1;
         int up = 0;
         int down = row - 1;
-        while(left < right && up < down)
+        while(left <= right && up <= down)
         {
             int i = 0;
             for(i = left ;i <= right;i++)
