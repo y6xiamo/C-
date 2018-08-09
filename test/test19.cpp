@@ -17,15 +17,19 @@ public:
 
         }
 
+        //定义上下左右四个变量用来表示矩阵的四个角
         int left = 0;
         int right = col - 1;
         int up = 0;
         int down = row - 1;
+        //循环条件
         while(left <= right && up <= down)
         {
             int i = 0;
+            //打印第一行
             for(i = left ;i <= right;i++)
             {
+                //把元素都依次插入到新vector中
                 result.push_back(matrix[up][i]);
 
             }
