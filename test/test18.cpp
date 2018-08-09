@@ -20,11 +20,13 @@ public:
         }
         //如果树不为空，交换其左右子树
         swap(pRoot->left,pRoot->right);
+        //左子树不为空
         if(pRoot->left)
         {
             Mirror(pRoot->left);
 
         }
+        //右子树不为空
         if(pRoot->right)
         {
             Mirror(pRoot->right);
