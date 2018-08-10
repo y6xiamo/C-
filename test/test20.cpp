@@ -26,6 +26,10 @@ public:
 
     }
     void pop() {
+        //如果要出栈的元素就是当前最小栈的栈顶元素
+        //就将最小栈出栈
+        //然后将数据栈出栈
+        //否则，只出数据栈
         if(data_stack.top() == min_stack.top())
         {
             min_stack.pop();
@@ -42,11 +46,13 @@ public:
          *   }
          *                                       */
         //   min_stack.pop();
+        //   取数据栈栈顶元素
            int ret =  data_stack.top();
            return ret;
        }
 
         int min() {
+            //取最小栈栈顶元素
             int min =  min_stack.top();
             return min;
         }
