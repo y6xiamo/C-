@@ -15,9 +15,11 @@ public:
     {
         if(pHead == NULL)
         {
+            //空链表
             return NULL;
-
         }
+
+        //1.遍历原链表，给每个节点后插入新的节点
         RandomListNode* cur = pHead;
 
         for( ;cur != NULL;cur = cur->next->next )
@@ -28,6 +30,8 @@ public:
 
         }
 
+
+        //2.维护新链表的random指针
         for(cur = pHead;cur != NULL;cur = cur->next->next)
         {
             RandomListNode* new_cur = cur->next;
@@ -41,6 +45,7 @@ public:
 
         }
 
+        //3.将新链表从旧的链表中删除
         RandomListNode* new_head = NULL;
         RandomListNode* new_tail = NULL;
         RandomListNode* new_cur = NULL;
@@ -61,11 +66,7 @@ public:
             }
 
         }
-
-
         return new_head;
-
-
     }
 
 };
