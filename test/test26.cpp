@@ -31,14 +31,18 @@ public:
         return cur;
 
     }
+    //这个函数用来完成递归
     void ConvertList(TreeNode* root,TreeNode*& head)
     {
         if(root == NULL)
         {
+            //空树
             return;
-
         }
+        //找左子树
         ConvertList(root->left,head);
+        //构建双向链表
+        //
         root->left = head;
         if(head != NULL)
         {
@@ -46,6 +50,7 @@ public:
 
         }
         head = root;
+        //找右子树
         ConvertList(root->right,head);
 
     }
