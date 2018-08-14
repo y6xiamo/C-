@@ -1,5 +1,6 @@
 #include <iostream>
 
+//将一个二叉搜索树转换成一个排序的双向链表
  struct TreeNode {
   int val;
   struct TreeNode *left;
@@ -19,6 +20,7 @@ public:
         }
         TreeNode* head = NULL;
         ConvertList(pRootOfTree,head);
+        //遍历左子树，找到左子树中的叶子节点，它就是排序链表的头结点
         TreeNode* cur = pRootOfTree;
         while(cur->left != NULL)
         {
