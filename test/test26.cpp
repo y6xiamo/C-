@@ -42,7 +42,9 @@ public:
         //找左子树
         ConvertList(root->left,head);
         //构建双向链表
-        //
+        //要是有序的双向链表
+        //左子树的右叶子节点的下一个应该接根节点
+        //而根节点要接右子树的第一个左节点
         root->left = head;
         if(head != NULL)
         {
