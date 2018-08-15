@@ -4,6 +4,8 @@
 using namespace std;
 class Solution {
     //查找一个数组中最小的k个数
+    //下面这种解法时间复杂度为O(n*logn)
+    //改变了原有数组
 public:
     vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
         vector<int> output;
