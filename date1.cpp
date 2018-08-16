@@ -321,7 +321,8 @@ private:
 int main()
 {
     Date d1(2018,8,6);
-    Date d2(2002,12,12);
+    Date d2(2018,8,6);
+    cout<<d1 -d2<<endl;
  //  Date d3(2018,8,6);
 //    Date d3;
 //    cin>>d3;
