@@ -56,5 +56,6 @@ int main()
 {
     string s1("hello");
     cout<<s1<<endl;
+    string s2(s1);
     return 0;
 }
