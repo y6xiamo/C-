@@ -167,7 +167,10 @@ public:
             _str = NULL;
         }
     }
-
+char* c_str()
+{
+    return _str;
+}
 private:
     char* _str;
     size_t _size;
@@ -177,8 +180,12 @@ private:
 int main()
 {
     DP_COPY::String s1("hello");
-    cout<<DP_COPY::s1.c_str()<<endl;
+    cout<<s1.c_str()<<1<<endl;
    DP_COPY::String s2(s1);
-    cout<<s2.c_str()<<endl;
+    cout<<s2.c_str()<<2<<endl;
+    DP_COPY::String s3("world");
+    s1 = s3;
+    cout<<s3.c_str()<<3<<endl;
+    cout<<s1.c_str()<<1<<endl;
 
 }
