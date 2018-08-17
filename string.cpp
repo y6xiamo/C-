@@ -167,10 +167,85 @@ public:
             _str = NULL;
         }
     }
-char* c_str()
-{
-    return _str;
-}
+
+    //Capacity
+    void Reverse(size_t n)
+    {
+        Expand(n);
+    }
+
+    //Size+Capacity
+    //初始化
+    void Resize(size_t n,char ch = '\0')
+    {
+        if(n < _size)
+        {
+            _size = n;
+            _str[_size] = '\0';
+        }
+        else
+        {
+            if(n > _capacity)
+            {
+                Expand(n);
+            }
+            for(size_t i = _size;i < n;i++)
+            {
+                _str[i] = ch;
+            }
+            _str[n] = '\0';
+            _size = n;
+        }
+    }
+
+    void Expand(size_t n)
+    {
+        if(n > _capacity)
+        {
+            char* tmp = new char[n+1];
+            strcpy(tmp,_str);
+
+            delete[] _str;
+            _str = tmp;
+
+            _capacity = n;
+        }
+    }
+
+    //插入一个字符
+    void PushBack(char ch)
+    {
+        if(_size == _capacity)
+        {
+            Expand(_capacity*2);
+        }
+        _str[_size] = ch;
+        _str[_size+1] = '\0';
+        _size++;
+    }
+    
+    //添加一个字符串
+    void Append(const char* str)
+    {
+        size_t len = strlen(str);
+        if(_size + len > _capacity)
+        {
+            size_t newcapacity = _capacity * 2;
+            while(newcapacity < _size + len)
+            {
+                newcapacity *= 2;
+            }
+            Expand(_size + len);
+
+        }
+        strcpy(_str+_size,str);
+        _size += len;
+    }
+
+    char* c_str()
+    {
+        return _str;
+    }
 private:
     char* _str;
     size_t _size;
