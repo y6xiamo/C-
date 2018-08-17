@@ -1,6 +1,7 @@
 #include <iostream>
 #include<string>
 #include<string.h>
+#include<assert.h>
 using namespace std;
 
 //class String 
@@ -242,6 +243,29 @@ public:
         _size += len;
     }
 
+    void Insert(size_t pos,char ch)
+    {
+        //检查pos是否越界
+        assert(pos <= _size);
+
+        //空间不够，扩容
+        if(_size == _capacity)
+        {
+            Expand(_capacity*2);
+        }
+        //将pos之后的所有元素都向后移动
+        size_t end = _size;
+        while(end != pos)
+        {
+            _str[end+1] = _str[end];
+            --end;
+        }
+
+        //在pos位置插入指定元素
+        _str[end] = ch;
+        ++_size;
+    }
+    
     char* c_str()
     {
         return _str;
@@ -254,13 +278,41 @@ private:
 }
 int main()
 {
-    DP_COPY::String s1("hello");
-    cout<<s1.c_str()<<1<<endl;
-   DP_COPY::String s2(s1);
-    cout<<s2.c_str()<<2<<endl;
-    DP_COPY::String s3("world");
-    s1 = s3;
-    cout<<s3.c_str()<<3<<endl;
-    cout<<s1.c_str()<<1<<endl;
+ //   DP_COPY::String s1("hello");
+ //   cout<<s1.c_str()<<1<<endl;
+ //  DP_COPY::String s2(s1);
+ //   cout<<s2.c_str()<<2<<endl;
+ //   DP_COPY::String s3("world");
+ //   s1 = s3;
+ //   cout<<s3.c_str()<<3<<endl;
+ //   cout<<s1.c_str()<<1<<endl;
+
+//    DP_COPY::String s1("hello");
+//    DP_COPY::String s3("world");
+//
+//    swap(s1,s3);
+//    s1.Swap(s3);
+//
+//    cout<<s1.c_str()<<1<<endl;
+//    cout<<s3.c_str()<<3<<endl;
+//
+//      DP_COPY::String s1("hello");
+//      cout<<s1.c_str()<<endl;
+//      s1.PushBack('c');
+//      cout<<s1.c_str()<<endl;
+
+//      DP_COPY::String s1("hello");
+//      cout<<s1.c_str()<<endl;
+//      s1.Append(" world");
+//      cout<<s1.c_str()<<endl;
+
+        DP_COPY::String s1("hello");
+        cout<<s1.c_str()<<endl;
+
+        s1.Insert(2,'w');
+        cout<<s1.c_str()<<endl;
+
+
+
 
 }
