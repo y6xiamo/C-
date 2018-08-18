@@ -24,19 +24,15 @@ public:
             }
             else
             {
+                //求连续子序列的和，将其保存起来
                 curSum += array[i];
             }
             if(curSum > maxSum)
             {
+                //将最大的和赋给maxSum
                 maxSum = curSum;
             }
         }
         return maxSum;
     }
 };
-}
-}
-}
-}
-}
-}
