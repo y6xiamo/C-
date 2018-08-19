@@ -365,7 +365,53 @@ public:
     {
         return _size == 0;
     }
-    
+
+    //[]重载
+    char& operator[](size_t pos)
+    {
+        return _str[pos];
+    }
+
+    //查找一个指定的元素
+    size_t Find(char ch) const
+    {
+        for(size_t i = 0;i < _size;i++)
+        {
+            if(_str[i] == ch)
+            {
+                return i;
+            }
+        }
+        return npos;
+    }
+
+    //查找一个指定的字符串
+    size_t Find(const char* sub) const
+    {
+        char* cur = _str;
+        while(*cur)
+        {
+            const char* cur_tmp = cur;
+            const char* sub_tmp = sub;
+            while(*sub_tmp && *cur_tmp == *sub_tmp)
+            {
+                cur_tmp++;
+                sub_tmp++;
+            }
+            if(*sub_tmp == '\0')
+            {
+                return cur-_str;
+            }
+            else
+            {
+                cur++;
+            }
+        }
+        return npos;
+    }
+
+
+
     
 
 
@@ -379,7 +425,12 @@ private:
     char* _str;
     size_t _size;
     size_t _capacity;
+
+public:
+    static size_t npos;
 };
+
+size_t String::npos = -1;
 }
 int main()
 {
@@ -437,8 +488,11 @@ int main()
   //      s1.Erase(1,3);
   //      cout<<s1.c_str()<<endl;
 
-        cout<<s1.Size()<<endl;
-        cout<<s1.Capacity()<<endl;
-        cout<<s1.Empty()<<endl;
+  //      cout<<s1.Size()<<endl;
+  //      cout<<s1.Capacity()<<endl;
+  //      cout<<s1.Empty()<<endl;
 
+        cout<<s1[2]<<endl;
+        cout<<s1.Find('o')<<endl;
+        cout<<s1.Find("llo")<<endl;
 }
