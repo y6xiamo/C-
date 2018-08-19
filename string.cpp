@@ -243,6 +243,7 @@ public:
         _size += len;
     }
 
+    //在pos位置插入一个字符
     void Insert(size_t pos,char ch)
     {
         //检查pos是否越界
@@ -266,6 +267,24 @@ public:
         ++_size;
     }
     
+    //在pos位置插入一个字符串
+    void Insert(size_t pos,const char* str)
+    {
+        assert(pos <= _size);
+        //检查pos是否越界
+        int len = strlen(str);
+        if(len + _size > _capacity)
+        {
+            Expand(_size+len);
+        }
+        int end = _size;
+        while(end >= (int)pos)
+        {
+
+        }
+
+
+    }
     char* c_str()
     {
         return _str;
