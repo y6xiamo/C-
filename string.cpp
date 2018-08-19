@@ -307,6 +307,64 @@ public:
         //this->operator += (s._str);
         return *this;
     }
+
+    //s1 + "world"
+    String operator + (const char* str)
+    {
+        String ret(_str);
+        ret.Append(str);
+        return ret;
+    }
+
+    //s1 + s2
+    String operator + (const String s)
+    {
+        String ret(_str);
+        return *this + s._str;
+    }
+
+    void PopBack()
+    {
+        //检查是否为空
+        assert(_size > 0);
+        --_size;
+        _str[_size] = '\0';
+    }
+
+    //删除指定位置的len个元素
+    void Erase(size_t pos,size_t len)
+    {
+        assert(pos < _size);
+        //检查pos是否合法
+        //如果从pos位置往后的元素不够len个健康
+        //就把pos位置置为0
+        //否则，就用后面的元素覆盖掉前len个元素
+        if(pos + len >= _size)
+        {
+            _str[pos] = '\0';
+            _size = pos;
+        }
+        else
+        {
+            strcpy(_str+pos,_str+pos+len);
+            _size -= len;
+        }
+    }
+
+    size_t Size()
+    {
+        return _size;
+    }
+
+    size_t Capacity()
+    {
+        return _capacity;
+    }
+
+    bool Empty()
+    {
+        return _size == 0;
+    }
     
     
 
@@ -366,9 +424,21 @@ int main()
         cout<<s1.c_str()<<endl;
 
        // s1 += "world";
-        DP_COPY::String s2("wolrd");
-         s1 += s2;
-        cout<<s1.c_str()<<endl;
+  //      DP_COPY::String s2("wolrd");
+  //       s1 += s2;
+  
+  //      DP_COPY::String s2 =  s1 + "world";
+  //      cout<<s1.c_str()<<endl;
+  //      cout<<s2.c_str()<<endl;
 
+  //      s1.PopBack();
+  //      cout<<s1.c_str()<<endl;
+
+  //      s1.Erase(1,3);
+  //      cout<<s1.c_str()<<endl;
+
+        cout<<s1.Size()<<endl;
+        cout<<s1.Capacity()<<endl;
+        cout<<s1.Empty()<<endl;
 
 }
