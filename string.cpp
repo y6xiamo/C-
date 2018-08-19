@@ -216,31 +216,33 @@ public:
     //插入一个字符
     void PushBack(char ch)
     {
-        if(_size == _capacity)
-        {
-            Expand(_capacity*2);
-        }
-        _str[_size] = ch;
-        _str[_size+1] = '\0';
-        _size++;
+   //     if(_size == _capacity)
+   //     {
+   //         Expand(_capacity*2);
+   //     }
+   //     _str[_size] = ch;
+   //     _str[_size+1] = '\0';
+   //     _size++;
+          Insert(_size,ch);
     }
     
     //添加一个字符串
     void Append(const char* str)
     {
-        size_t len = strlen(str);
-        if(_size + len > _capacity)
-        {
-            size_t newcapacity = _capacity * 2;
-            while(newcapacity < _size + len)
-            {
-                newcapacity *= 2;
-            }
-            Expand(_size + len);
+   //     size_t len = strlen(str);
+   //     if(_size + len > _capacity)
+   //     {
+   //         size_t newcapacity = _capacity * 2;
+   //         while(newcapacity < _size + len)
+   //         {
+   //             newcapacity *= 2;
+   //         }
+   //         Expand(_size + len);
 
-        }
-        strcpy(_str+_size,str);
-        _size += len;
+   //     }
+   //     strcpy(_str+_size,str);
+   //     _size += len;
+          Insert(_size,str);
     }
 
     //在pos位置插入一个字符
@@ -275,16 +277,42 @@ public:
         int len = strlen(str);
         if(len + _size > _capacity)
         {
+            //空间不够，扩容
             Expand(_size+len);
         }
         int end = _size;
         while(end >= (int)pos)
         {
-
+            //将元素向后移动len个位置
+            _str[end+len] = _str[end];
+            --end;
         }
-
-
+        //将要插入的字符串拷贝过来
+        strncpy(_str+pos,str,len);
+        _size += len;
     }
+
+    //s1 += "world"
+    String& operator += (const char* str)
+    {
+       this->Append(str);
+       return *this;
+    }
+
+    //s1 += s2
+    String& operator += (const String s)
+    {
+       // this->Append(s._str);
+        *this += s._str;
+        //this->operator += (s._str);
+        return *this;
+    }
+    
+    
+
+
+
+
     char* c_str()
     {
         return _str;
@@ -325,13 +353,22 @@ int main()
 //      s1.Append(" world");
 //      cout<<s1.c_str()<<endl;
 
+//        DP_COPY::String s1("hello");
+//        cout<<s1.c_str()<<endl;
+//
+//        s1.Insert(2,'w');
+//        cout<<s1.c_str()<<endl;
+//
+//        s1.Insert(2,"hahaha");
+//        cout<<s1.c_str()<<endl;
+
         DP_COPY::String s1("hello");
         cout<<s1.c_str()<<endl;
 
-        s1.Insert(2,'w');
+       // s1 += "world";
+        DP_COPY::String s2("wolrd");
+         s1 += s2;
         cout<<s1.c_str()<<endl;
-
-
 
 
 }
