@@ -410,6 +410,38 @@ public:
         return npos;
     }
 
+    //运算符重载
+    //s1 < s2 ---> s1.operator<(s2)
+    bool operator < (const String& s)const
+    {
+        const char* str1 = _str;
+        const char* str2 = s._str;
+        while(*str1 && *str2)
+        {
+            if(*str1 < *str2)
+            {
+                return true;
+            }
+            else if(*str1 > *str2)
+            {
+                return false;
+            }
+            else
+            {
+                str1++;
+                str2++;
+            }
+        }
+        if(*str1 == '\0' &&*str2 != '\0')
+        {
+            return true;;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
 
 
     
@@ -492,7 +524,10 @@ int main()
   //      cout<<s1.Capacity()<<endl;
   //      cout<<s1.Empty()<<endl;
 
-        cout<<s1[2]<<endl;
-        cout<<s1.Find('o')<<endl;
-        cout<<s1.Find("llo")<<endl;
+  //      cout<<s1[2]<<endl;
+  //      cout<<s1.Find('x')<<endl;
+  //      cout<<s1.Find("llo")<<endl;
+  
+        DP_COPY::String s2("hell");
+        cout<<s1.operator<(s2)<<endl;
 }
