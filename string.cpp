@@ -2,6 +2,7 @@
 #include<string>
 #include<string.h>
 #include<assert.h>
+#include<stdlib.h>
 using namespace std;
 
 //class String 
@@ -499,6 +500,145 @@ public:
 };
 
 size_t String::npos = -1;
+
+void TestString()
+{
+    char buffer[128];
+    size_t n = 500000;
+
+    int begin1 = clock();
+    String s1;
+    for(size_t i = 0;i < n;i++)
+    {
+  //      itoa(i,buffer,10);
+          s1 += buffer;
+    }
+    int end1 = clock();
+   
+    int begin2 = clock();
+    String s2;
+    s2.Reverse(s1.Capacity());
+    for(size_t i = 0;i < n;i++)
+    {
+  //      itoa(i,buffer,10);
+        s1 += buffer;
+    }
+    int end2 = clock();
+
+    cout<<end1-begin1<<endl;
+    cout<<end2-begin2<<endl;
+}
+}
+
+//copy on write写时拷贝
+namespace COW
+{
+class String
+{
+public:
+    String(const char* str = "")
+    {
+        _str = new char[strlen(str)+1];
+        strcpy(_str,str);
+        _pcount = new int(1);
+    }
+
+    //s2(s1)
+    String(const String& s)
+    {
+        _str = s._str;
+        _pcount = s._pcount;
+        (*_pcount)++;
+    }
+
+    //s1 = s2
+    String& operator = (const String& s)
+    {
+        if(this != &s)
+        {
+            if(--(*_pcount) == 0)
+            {
+                delete[] _str;
+                delete _pcount;
+            }
+            _str = s._str;
+            _pcount = s._pcount;
+            ++(*s._pcount);
+        }
+        return *this;
+    }
+
+    ~String()
+    {
+        if(--(*_pcount) == 0)
+        {
+            delete[] _str;
+            delete _pcount;
+        }
+    }
+
+    void CopyOnWrite()
+    {
+        if(*_pcount > 1)
+        {
+            //现将原来的数据拷贝一份
+            //然后引用计数减一
+            char* tmp = new char[strlen(_str)+1];
+            strcpy(tmp,_str);
+            --(*_pcount);
+
+            //再指向这块新的空间
+            _str = tmp;
+            _pcount = new int(1);
+        }
+    }
+
+    char& operator[](size_t pos)
+    {
+        CopyOnWrite();
+        return _str[pos];
+    }
+
+    const char& operator[](size_t pos)const
+    {
+        return _str[pos];
+    }
+
+    char* c_str()
+    {
+        return _str;
+    }
+private:
+    char* _str;
+    int* _pcount;//引用计数
+
+    size_t _size;
+    size_t capacity;
+};
+
+void TestString()
+{
+    String s1("hello");
+    String s2(s1);
+    s1[0] = 'x';
+    cout<<s1[0]<<endl;
+
+    cout<<s1.c_str()<<endl;
+    cout<<s2.c_str()<<endl;
+}
+
+void TestString1()
+{
+    int begin1 = clock();
+    String s1("11111111111111111111111111111111");
+    for(size_t i=0;i < 1000000000;i++)
+    {
+        String s2(s1);
+    }
+    int end1 = clock();
+    cout<<end1-begin1<<endl;
+}
+
 }
 int main()
 {
@@ -539,7 +679,7 @@ int main()
 //        s1.Insert(2,"hahaha");
 //        cout<<s1.c_str()<<endl;
 
-        DP_COPY::String s1("hello");
+  //      DP_COPY::String s1("hello");
   //      cout<<s1.c_str()<<endl;
 
        // s1 += "world";
@@ -564,21 +704,25 @@ int main()
   //      cout<<s1.Find('x')<<endl;
   //      cout<<s1.Find("llo")<<endl;
   
-        DP_COPY::String s2("hell");
-        cout<<s1.operator<(s2)<<endl;
+   //     DP_COPY::String s2("hell");
+   //     cout<<s1.operator<(s2)<<endl;
 
-        DP_COPY::String s3("hello");
-        cout<<s1.operator<=(s3)<<endl;
+   //     DP_COPY::String s3("hello");
+   //     cout<<s1.operator<=(s3)<<endl;
 
-        DP_COPY::String s4("hellox");
-        cout<<s1.operator>(s4)<<endl;
-      
-        DP_COPY::String s5("hell");
-        cout<<s1.operator>=(s5)<<endl;
-     
-        DP_COPY::String s6("hello");
-        cout<<s1.operator==(s6)<<endl;
-        
-        DP_COPY::String s7("hell");
-        cout<<s1.operator!=(s7)<<endl;
+   //     DP_COPY::String s4("hellox");
+   //     cout<<s1.operator>(s4)<<endl;
+   //   
+   //     DP_COPY::String s5("hell");
+   //     cout<<s1.operator>=(s5)<<endl;
+   //  
+   //     DP_COPY::String s6("hello");
+   //     cout<<s1.operator==(s6)<<endl;
+   //     
+   //     DP_COPY::String s7("hell");
+   //     cout<<s1.operator!=(s7)<<endl;
+   
+        COW::TestString();
+        COW::TestString1();
+        return 0;
 }
