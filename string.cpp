@@ -440,14 +440,50 @@ public:
         {
             return false;
         }
-
     }
 
+    bool operator == (const String s)const
+    {
+        const char* str1 = _str;
+        const char* str2 = s._str;
+        while(*str1 && *str2)
+        {
+            if(*str1 != *str2)
+            {
+                return false;
+            }
+            ++str1;
+            ++str2;
+        }
+        if(*str1 == '\0' && *str2 == '\0')
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-    
+    bool operator <= (const String s)const 
+    {
+        return *this < s ||*this == s;
+    }
 
+    bool operator > (const  String s)const
+    {
+        return !(*this <= s);
+    }
 
+    bool operator >= (const String s)const
+    {
+        return !(*this < s);
+    }
 
+    bool operator != (const String s)const
+    {
+        return !(*this  == s);
+    }
 
     char* c_str()
     {
@@ -504,7 +540,7 @@ int main()
 //        cout<<s1.c_str()<<endl;
 
         DP_COPY::String s1("hello");
-        cout<<s1.c_str()<<endl;
+  //      cout<<s1.c_str()<<endl;
 
        // s1 += "world";
   //      DP_COPY::String s2("wolrd");
@@ -530,4 +566,19 @@ int main()
   
         DP_COPY::String s2("hell");
         cout<<s1.operator<(s2)<<endl;
+
+        DP_COPY::String s3("hello");
+        cout<<s1.operator<=(s3)<<endl;
+
+        DP_COPY::String s4("hellox");
+        cout<<s1.operator>(s4)<<endl;
+      
+        DP_COPY::String s5("hell");
+        cout<<s1.operator>=(s5)<<endl;
+     
+        DP_COPY::String s6("hello");
+        cout<<s1.operator==(s6)<<endl;
+        
+        DP_COPY::String s7("hell");
+        cout<<s1.operator!=(s7)<<endl;
 }
