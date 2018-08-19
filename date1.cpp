@@ -2,16 +2,17 @@
 using namespace std;
 class Date
 {
+public:
     //四个默认成员函数
     //
     //构造函数
-public:
     Date(int year = 2018,int month = 9,int day = 1)
     {
         _year = year;
         _month = month;
         _day = day;
     }
+    
     //拷贝构造 
     //s2(s1)
     //s2->this,s1->d
@@ -22,7 +23,7 @@ public:
         _day = d._day;
     }
 
-    //赋值
+    //赋值运算符的重载
     //d1 = d2; d1->this,d2->d
     Date& operator=(const Date& d)
     {
@@ -34,7 +35,6 @@ public:
         }
         return *this;
     }
-
     
     //析构，完成清理工作
     ~Date()
@@ -42,8 +42,8 @@ public:
 
     }
 
+    //运算符的重载
 
-    //赋值运算符的重载
    // d1 < d2 --> d1.operator(&d1,d2);
     bool operator < (const Date& d)
     {
@@ -72,6 +72,8 @@ public:
     {
         return !(*this < d);
     }
+
+    //判断相等
     //d1 == d2
     bool operator==(const Date& d)
     {
@@ -124,8 +126,6 @@ public:
         }
     }
 
-    
-
     //++d
     Date& operator ++ ()  //前置
     {
@@ -153,8 +153,6 @@ public:
     {
         Date tmp = (*this);
         ++(*this);
-
-
         return tmp;
     }
 
@@ -172,16 +170,14 @@ public:
             _day += GetMonthDay(_year,_month);
         }
         return *this;
-
     }
+
     Date operator -- (int)//后置
     {
         Date tmp = (*this);
         --(*this);
         return tmp;;
-
     }
-
 
    Date& operator += (int day)
    {
@@ -218,10 +214,8 @@ public:
                 --(_year);
                 _month = 12;
             }
-
         }
         return (*this);
-
      } 
 
    Date operator - (int day)
@@ -239,7 +233,6 @@ public:
    {
        int count = 0;//用来记录天数
        int flag = 1;//用来标志两个日期的大小
-
        if(*this < d)
        {
            swap(*this,d);
@@ -271,9 +264,6 @@ public:
        return this;
    }
 
-   
-
-    
     //输入输出流的重载
     //cout << d
     //cout.operator<<(d);
@@ -291,8 +281,7 @@ public:
        in >> d._year;
        in >> d._month;
        in >> d._day;
-       return in;
-       
+       return in;       
    }
 
     //打印年月日
