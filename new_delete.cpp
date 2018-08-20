@@ -67,15 +67,21 @@ private:
 
 void Test()
 {
+//    Array* p1 = (Array*)malloc(sizeof(Array));
+//    Array* p2 = new Array;
+//    Array* p3 = new Array(3);
+//    Array* p4 = new Array[3];
+//
+//    free(p1);
+//    delete p2;
+//    delete p3;
+//    delete[] p4;
+      
     Array* p1 = (Array*)malloc(sizeof(Array));
-    Array* p2 = new Array;
-    Array* p3 = new Array(3);
-    Array* p4 = new Array[3];
+    new(p1) Array(100);
 
+    p1->~Array();
     free(p1);
-    delete p2;
-    delete p3;
-    delete[] p4;
 }
 int main()
 {
