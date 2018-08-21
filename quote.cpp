@@ -26,17 +26,42 @@ using namespace std;
 //值传递
 void Swap(int left,int right)
 {
-    int temp = left;
+    int tmp = left;
     left = right;
-    right = temp;
+    right = tmp;
 }
+
+//指针传递
+void Swap1(int* left,int* right)
+{
+    int tmp = *left;
+    *left = *right;
+    *right = tmp;
+}
+
+//引用传递
+void Swap2(int& left,int& right)
+{
+    int tmp = left;
+    left = right;
+    right = tmp;
+}
+
 void Test()
 {
     int a = 10;
     int b = 20;
-    Swap(a,b);
-    cout<<"a = "<<a<<endl;
-    cout<<"b = "<<b<<endl;
+  //  Swap(a,b);
+  //  cout<<"a = "<<a<<endl;
+  //  cout<<"b = "<<b<<endl;
+    
+ //   Swap1(&a,&b);
+ //   cout<<"a = "<<a<<endl;
+ //   cout<<"b = "<<b<<endl;
+    
+   Swap2(a,b);
+   cout<<"a = "<<a<<endl;
+   cout<<"b = "<<b<<endl;
 }
 int main()
 {
