@@ -5,6 +5,7 @@
 using namespace std;
 class Solution {
 public:
+    //把数组排成最小的数
     static bool cmp(int a,int b)
     {
         string A = to_string(a) + to_string(b);
