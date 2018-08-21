@@ -18,26 +18,22 @@ public:
         int tmp5 = 0;
         for(int i = 1;i < index;++i)
         {
+            //找出1到n中的所有丑数，按顺序排列
+            //下一个丑数是在上一个的基础上*2,*3,*5,然后从其中找出最小的
             result[i] = min(result[tmp2]* 2,min(result[tmp3]*3,result[tmp5]*5));
             if(result[i] == result[tmp2]*2)
             {
                 tmp2++;
-
             }
             if(result[i] == result[tmp3]*3)
             {
                 tmp3++;
-
             }
             if(result[i] == result[tmp5]*5)
             {
                 tmp5++;
-
             }
-
         }
         return result[index-1];
-
     }
-
 };
