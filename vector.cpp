@@ -27,21 +27,26 @@ void print_vector(const vector<int> &v)
     }
     cout<<endl;
 
-    vector<int> const_iterator it = v.begin();
-    while(it != v.end())
+    for(int j = v.size() - 1;j >= 0;j--)
     {
-        *it = 10;
-        cout<<*it<<" ";
-        it++;
+        cout<<v[j]<<" ";
     }
 
-    vector<int>::rever_iterator rit = v.begin();
-
-    while(rit != v.end())
+    vector<int> reverse_iterator rit = v.rbegin();
+    while(rit != v.rend())
     {
-        cout<<*it<<" ";
-        ++rit;
+        *rit = 10;
+        cout<<*rit<<" ";
+        rit++;
     }
+
+  //  vector<int>::rever_iterator rit = v.begin();
+
+  //  while(rit != v.end())
+  //  {
+  //      cout<<*rit<<" ";
+  //      ++rit;
+  //  }
 }
 
 void Test()
