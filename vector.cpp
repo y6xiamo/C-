@@ -19,7 +19,7 @@ void print_vector(const vector<int> &v)
     }
 
     //偶尔会用
-    vector<int>::iterator it = v.begin();
+    vector<int>::const_iterator it = v.begin();
     while(it != v.end())
     {
         cout<<*it<<" ";
