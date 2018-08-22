@@ -26,6 +26,22 @@ void print_vector(const vector<int> &v)
         it++;
     }
     cout<<endl;
+
+    vector<int> const_iterator it = v.begin();
+    while(it != v.end())
+    {
+        *it = 10;
+        cout<<*it<<" ";
+        it++;
+    }
+
+    vector<int>::rever_iterator rit = v.begin();
+
+    while(rit != v.end())
+    {
+        cout<<*it<<" ";
+        ++rit;
+    }
 }
 
 void Test()
