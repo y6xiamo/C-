@@ -33,13 +33,14 @@ void print_vector(const vector<int> &v)
     }
 
 
-    vector<int> reverse_iterator rit = v.rbegin();
-    while(rit != v.rend())
-    {
-        *rit = 10;
-        cout<<*rit<<" ";
-        rit++;
-    }
+    //反向迭代器
+  //  vector<int> reverse_iterator rit = v.rbegin();
+  //  while(rit != v.rend())
+  //  {
+  //      *rit = 10;
+  //      cout<<*rit<<" ";
+  //      rit++;
+  //  }
 
   //  vector<int>::rever_iterator rit = v.begin();
 
