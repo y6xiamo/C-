@@ -63,7 +63,19 @@ void print_vector(const vector<int> &v)
 
 void Test()
 {
+    vector<int> v1;
+    v1.push_back(1);
+    v1.push_back(2);
+    v1.push_back(3);
+    v1.push_back(4);
 
+    for(size_t i = 0;i < v1.size();i++)
+    {
+        if(v1[i] % 2 == 0)
+        {
+            v1[i] *= 2;
+        }
+    }
 }
 int main()
 {
