@@ -44,21 +44,21 @@ void print_vector(const vector<int> &v)
 
 
     //反向迭代器
-    vector<int>::reverse_iterator rit = v.rbegin();
+ //   vector<int>::reverse_iterator rit = v.rbegin();
+ //   while(rit != v.rend())
+ //   {
+ //       cout<<*rit<<" ";
+ //       rit++;
+ //   }
+ //   cout<<endl;
+
+    vector<int>::const_reverse_iterator rit = v.rbegin();
+
     while(rit != v.rend())
     {
         cout<<*rit<<" ";
-        rit++;
+        ++rit;
     }
-    cout<<endl;
-
- //   vector<int>::const_rever_iterator it = v.begin();
-
- //   while(rit != v.end())
- //   {
- //       cout<<*rit<<" ";
- //       ++rit;
- //   }
 }
 
 void Test()
