@@ -18,7 +18,7 @@ void print_vector(const vector<int> &v)
         cout<<endl;
     }
 
-    //偶尔会用
+    //偶尔会用 const迭代器
     vector<int>::const_iterator it = v.begin();
     while(it != v.end())
     {
@@ -31,6 +31,7 @@ void print_vector(const vector<int> &v)
     {
         cout<<v[j]<<" ";
     }
+
 
     vector<int> reverse_iterator rit = v.rbegin();
     while(rit != v.rend())
