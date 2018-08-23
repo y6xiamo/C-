@@ -52,13 +52,13 @@ void print_vector(const vector<int> &v)
  //   }
  //   cout<<endl;
 
-    vector<int>::const_reverse_iterator rit = v.rbegin();
+   // vector<int>::const_reverse_iterator rit = v.rbegin();
 
-    while(rit != v.rend())
-    {
-        cout<<*rit<<" ";
-        ++rit;
-    }
+   // while(rit != v.rend())
+   // {
+   //     cout<<*rit<<" ";
+   //     ++rit;
+   // }
 }
 
 void Test()
@@ -76,16 +76,19 @@ void Test()
             v1[i] *= 2;
         }
     }
+    print_vector(v1);
 
-    vector<int>::iterator it1 = v1.begin();
-    while(it1 != v1.end())
-    {
-        if(*it1 % 2 == 0)
-        {
-            *it1 *= 2;
-        }
-        it1++;
-    }
+   // vector<int>::iterator it1 = v1.begin();
+   // while(it1 != v1.end())
+   // {
+   //     if(*it1 % 2 == 0)
+   //     {
+   //         *it1 *= 2;
+   //     }
+   //     it1++;
+   // }
+   // 
+   // print_vector(v1);
 }
 int main()
 {
