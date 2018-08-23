@@ -12,11 +12,11 @@ using namespace std;
 void print_vector(const vector<int> &v)
 {
     //对vector而言最常用
- //   for(size_t i = 0;i < v.size();i++)
- //   {
- //       cout<<v[i]<<" ";
- //       cout<<endl;
- //   }
+    for(size_t i = 0;i < v.size();i++)
+    {
+        cout<<v[i]<<" ";
+        cout<<endl;
+    }
 
  //   //偶尔会用 迭代器
 ////   vector<int>::iterator it = v.begin();
@@ -76,8 +76,19 @@ void Test()
             v1[i] *= 2;
         }
     }
+
+    vector<int>::iterator it1 = v1.begin();
+    while(it1 != v1.end())
+    {
+        if(*it1 % 2 == 0)
+        {
+            *it1 *= 2;
+        }
+        it1++;
+    }
 }
 int main()
 {
     Test();
+    return 0;
 }
