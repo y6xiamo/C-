@@ -18,10 +18,19 @@ void print_vector(const vector<int> &v)
         cout<<endl;
     }
 
-    //偶尔会用 const迭代器
+    //偶尔会用 迭代器
+//   vector<int>::iterator it = v.begin();
+//    while(it != v.end())
+//    {
+//        cout<<*it<<" ";
+//        it++;
+//    }
+
+    //const迭代器
     vector<int>::const_iterator it = v.begin();
     while(it != v.end())
     {
+       // *it = 10;
         cout<<*it<<" ";
         it++;
     }
