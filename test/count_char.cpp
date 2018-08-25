@@ -7,7 +7,6 @@ public:
         if(data.size() == 0)
         {
             return 0;
-
         }
         int count = 0;
         for(size_t i = 0;i < data.size();i++)
@@ -15,12 +14,8 @@ public:
             if(data[i] == k)
             {
                 count++;
-
             }
-
         }
         return count;
-
     }
-
 };
