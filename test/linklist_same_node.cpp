@@ -9,11 +9,12 @@ struct ListNode {
 };
 class Solution {
 public:
-    //找
+    //找两个链表的公共节点
     ListNode* FindFirstCommonNode( ListNode* pHead1, ListNode* pHead2 ) {
         ListNode* cur1 = pHead1;
         ListNode* cur2 = pHead2;
 
+        //先求出两个链表的长度
         int len1 = 0;
         while(cur1 != NULL)
         {
@@ -29,6 +30,7 @@ public:
 
         cur1 = pHead1;
         cur2 = pHead2;
+        //比较两个链表谁长，让长的链表先走比另一个短的链表多余的步数
         int len;
         if(len1 > len2)
         {
@@ -48,6 +50,7 @@ public:
         }
         else{}
 
+        //然后让两个链表一起走，当他两相遇时，就是公共节点
         while(cur1 != NULL && cur2 != NULL)
         {
             if(cur1 == cur2)
