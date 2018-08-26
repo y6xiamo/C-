@@ -28,7 +28,7 @@ public:
 
         }
         int pop;
-        if(!stack2,empty())
+        if(!stack2.empty())
         {
             pop = stack2.top();
             stack2.pop();

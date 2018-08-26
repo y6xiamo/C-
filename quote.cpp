@@ -3,12 +3,12 @@ using namespace std;
 //void Test()
 //{
 //   // int a = 1;
-//   // int &b = a;
-//   // int &c = b;
-//   // cout<<"a:address->"<<&a<<endl;
-//   // cout<<"b:address->"<<&b<<endl;
-//   // cout<<"c:address->"<<&c<<endl;
-//   
+   // int &b = a;
+   // int &c = b;
+   // cout<<"a:address->"<<&a<<endl;
+   // cout<<"b:address->"<<&b<<endl;
+   // cout<<"c:address->"<<&c<<endl;
+   
 //    int d1 = 4;
 //    const int& d2 = d1;
 ////  //  d2 = 5;
@@ -51,14 +51,14 @@ void Test()
 {
     int a = 10;
     int b = 20;
-  //  Swap(a,b);
-  //  cout<<"a = "<<a<<endl;
-  //  cout<<"b = "<<b<<endl;
+ //  Swap(a,b);
+ //  cout<<"a = "<<a<<endl;
+ //  cout<<"b = "<<b<<endl;
     
  //   Swap1(&a,&b);
  //   cout<<"a = "<<a<<endl;
  //   cout<<"b = "<<b<<endl;
-    
+ //   
    Swap2(a,b);
    cout<<"a = "<<a<<endl;
    cout<<"b = "<<b<<endl;

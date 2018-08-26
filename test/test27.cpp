@@ -26,6 +26,8 @@ public:
     //完成字符的所有组合
     void PermutationHelp(vector<string>& array,string str,int begin)
     {
+        //如果只有一个字符
+        //就把它直接插入到数组中
         if(begin == str.size() - 1)
         {
             array.push_back(str);
@@ -34,11 +36,12 @@ public:
         int i;
         for(i = begin;i <= str.size() - 1;i++)
         {
+            //如果有重复的元素就跳过
             if(i != begin && str[i] == str[begin])
             {
                 continue;
-
             }
+            //交换第一个字符和它后面的其他字符
             swap(str[begin],str[i]);
             PermutationHelp(array,str,begin+1);
             swap(str[begin],str[i]);
