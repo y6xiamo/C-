@@ -10,6 +10,11 @@ public:
         {
             return false;
         }
+        //先排序
+        //然后统计处数组中0出现的次数
+        //然后统计出处0外的总间隔数
+        //如果总间隔数小于0出现的次数，则满足条件
+        //如果数组中有两个元素相等，直接返回错误
         sort(numbers.begin(),numbers.end());
 
         int count = 0;
