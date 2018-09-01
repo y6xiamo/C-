@@ -182,7 +182,7 @@ public:
    Date& operator += (int day)
    {
        _day = _day + day;
-       if(_day > GetMonthDay(_year,_month))
+       while(_day > GetMonthDay(_year,_month))
        {
            _day = _day - GetMonthDay(_year,_month);
            ++(_month);
@@ -205,7 +205,7 @@ public:
    Date& operator -= (int day)
    { 
         _day = _day - day;
-        if(_day  < 0)
+        while(_day  < 0)
         {
             _day = _day + GetMonthDay(_year,_month);
             --(_month);
@@ -287,7 +287,7 @@ public:
     //打印年月日
     void Display()
     {
-        cout<<_year<<"-"<<_month<<"-"<<_day;
+        cout<<_year<<"-"<<_month<<"-"<<_day<<endl;
     }
     
     //获取某一年某一个月的天数
@@ -310,8 +310,10 @@ private:
 int main()
 {
     Date d1(2018,8,6);
-    Date d2(2018,8,6);
-    cout<<d1 -d2<<endl;
+    Date d2 = d1 - 100;
+    d2.Display();
+  //  Date d2(2018,8,6);
+ //   cout<<d1 -d2<<endl;
  //  Date d3(2018,8,6);
 //    Date d3;
 //    cin>>d3;
